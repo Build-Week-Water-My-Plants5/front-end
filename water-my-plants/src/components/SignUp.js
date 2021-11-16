@@ -1,8 +1,8 @@
+import React from 'react';
 
-
-const SignUp = () => {
+const SignUp = (props) => {
     const { change, submit, disabled, errors } = props;
-    const { username, email, password, number } = props.value;
+    const { username, email, password, number, tos } = props.value;
 
     const onChange = evt => {
         const { name, value, checked, type } = evt.target
@@ -23,12 +23,8 @@ const SignUp = () => {
             <div className='header'>
                 Sing SignUp
             </div>
-        
-          {errors.password}
-          {errors.email}
-          {errors.number}
             
-            
+
             <div className='box'>
                 <label>Username
                     <input
@@ -38,6 +34,7 @@ const SignUp = () => {
                         onChange={onChange}
                     />
                 </label>
+                {errors.username}
             </div>
 
             <div>
@@ -49,7 +46,7 @@ const SignUp = () => {
                         onChange={onChange}
                     />
                 </label>
-                {errors.username}
+                {errors.email}
             </div>
 
             <div>
@@ -61,6 +58,7 @@ const SignUp = () => {
                         onChange={onChange}
                     />
                 </label>
+                {errors.password}
             </div>
 
             <div>
@@ -72,6 +70,7 @@ const SignUp = () => {
                         onChange={onChange}
                     />
                 </label>
+                {errors.number}
             </div>
 
             <div>
