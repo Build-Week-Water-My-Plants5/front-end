@@ -1,9 +1,10 @@
-import { Switch, Link } from 'react-router-dom';
+import { Switch, Link, Route } from 'react-router-dom';
 import './App.css';
 
 // Component Imports
 import Account from './components/Account';
 import Home from './components/Home';
+import Login from './components/Login';
 import PlantList from './components/PlantList';
 import SignUp from './components/SignUp';
 import SignOut from './components/SignOut';
