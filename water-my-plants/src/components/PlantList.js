@@ -19,6 +19,7 @@ const testPlant = {
 const PlantList = () => {
     const [isEditing, setIsEditing] = useState(false);
     const [formVal, setFormVal] = useState(initFormVal);
+    const [isNew, setIsNew] = useState(true);
     const [plants, setPlants] = useState([testPlant]);
 
     const handleChange = (e) => {
@@ -28,10 +29,21 @@ const PlantList = () => {
         })
     }
 
+    const handleAddPlant = () => {
+        setFormVal(initFormVal);
+        setIsNew(true);
+        setIsEditing(true);
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault();
         setIsEditing(false);
-        // Submit formVal
+        
+        if (setIsNew) {
+            // Handle axios.post
+        } else {
+            // handle axios.put
+        }
     }
 
     return(
@@ -54,7 +66,9 @@ const PlantList = () => {
                 </form>)
             }
 
-            {plants.map(item => <Plant key={item.id} data={item} setIsEditing={setIsEditing} isEditing={isEditing} setFormVal={setFormVal}/>)}
+            <button onClick={handleAddPlant}>Add a Plant</button>
+
+            {plants.map(item => <Plant key={item.id} data={item} setIsEditing={setIsEditing} isEditing={isEditing} setFormVal={setFormVal} setIsNew={setIsNew}/>)}
         </div>
     )
 }

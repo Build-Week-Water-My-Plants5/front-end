@@ -1,10 +1,11 @@
 
 
-const Plant = ({ data, isEditing, setIsEditing, setFormVal }) => {
+const Plant = ({ data, isEditing, setIsEditing, setFormVal, setIsNew }) => {
 
     const handleEdit = () => {
         if (!isEditing) {
             setIsEditing(true);
+            setIsNew(false);
             setFormVal({
                 nickname: data.nickname,
                 image: data.image,
