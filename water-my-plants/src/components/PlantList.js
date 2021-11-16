@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Plant from './Plant';
 
 
 const initFormVal = {
