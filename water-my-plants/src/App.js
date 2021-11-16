@@ -1,9 +1,44 @@
+import { Switch, Link } from 'react-router-dom';
 import './App.css';
+
+// Component Imports
+import Account from './components/Account';
+import Home from './components/Home';
+import PlantList from './components/PlantList';
+import SignUp from './components/SignUp';
+import SignOut from './components/SignOut';
 
 function App() {
   return (
     <div className="App">
-      <h1>TIME TO CODE!</h1>
+      <header>
+        <nav>
+          {/* Check for user auth, then render plantList Link */}
+          {/* Check for user auth, then render Account Link */}
+          {/* !user ? SignUp & SignIn : SignOut */}
+        </nav>
+      </header>
+
+      <Switch>
+        <Route path='/login'>
+          <Login />
+        </Route>
+        <Route path='/signup'>
+          <SignUp />
+        </Route>
+        <Route path='/signout'>
+          <SignOut />
+        </Route>
+        <Route path='/plants'>
+          <PlantList />
+        </Route>
+        <Route path='/account'>
+          <Account />
+        </Route>
+        <Route exact path='/'>
+          <Home />
+        </Route>
+      </Switch>
     </div>
   );
 }
