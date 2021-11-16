@@ -8,10 +8,18 @@ const initFormVal = {
     h20frequency: '',
     species: ''
 }
+
+const testPlant = {
+    nickname: 'Test Plant 1',
+    image: 'Test Image',
+    h20frequency: '5',
+    species: 'Test Species'
+}
+
 const PlantList = () => {
     const [isEditing, setIsEditing] = useState(false);
     const [formVal, setFormVal] = useState(initFormVal);
-    const [plants, setPlants] = useState([]);
+    const [plants, setPlants] = useState([testPlant]);
 
     const handleChange = (e) => {
         setFormVal({
@@ -22,7 +30,8 @@ const PlantList = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(formVal);
+        setIsEditing(false);
+        // Submit formVal
     }
 
     return(
@@ -45,20 +54,9 @@ const PlantList = () => {
                 </form>)
             }
 
-            {plants.map(item => <Plant data={item} setIsEditing={setIsEditing} isEditing={isEditing} setFormVal={setFormVal}/>)}
+            {plants.map(item => <Plant key={item.id} data={item} setIsEditing={setIsEditing} isEditing={isEditing} setFormVal={setFormVal}/>)}
         </div>
     )
 }
 
 export default PlantList;
-
-const EditForm = () => {
-
-
-
-    return(
-        <form>
-
-        </form>
-    )
-}
