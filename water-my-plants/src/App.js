@@ -14,9 +14,23 @@ function App() {
     <div className="App">
       <header>
         <nav>
-          {/* Check for user auth, then render plantList Link */}
-          {/* Check for user auth, then render Account Link */}
-          {/* !user ? SignUp & SignIn : SignOut */}
+          <h4>Water My Plants </h4>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/login">Login</Link>
+            </li>
+            <li>
+              <Link to="/signup">Sign Up</Link>
+            </li>
+          </ul>
+            {/* Check for user auth, then render plantList Link */}
+            {/* Check for user auth, then render Account Link */}
+            {/* !user ? SignUp & SignIn : SignOut */}
+            {/* the other links such as signout and plants will only be available to auth users so im gonna wait - */}
+            {/* to do that when we have setup the authentication */}
         </nav>
       </header>
 
@@ -42,6 +56,7 @@ function App() {
       </Switch>
 
       {/* Footer HTML goes here! */}
+      {/* i was thinking that for the navbar we can just make it stick to the top of the page:its basically css but i can do it if anything */}
     </div>
   );
 }
