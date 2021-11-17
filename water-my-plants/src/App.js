@@ -6,16 +6,23 @@ import Account from './components/Account';
 import Home from './components/Home';
 import Login from './components/Login';
 import PlantList from './components/PlantList';
+import PrivateRoute from './components/PrivateRoute';
 import SignUp from './components/SignUp';
 import SignOut from './components/SignOut';
 
 function App() {
+  const token = localStorage.getItem('token');
+
+
   return (
     <div className="App">
       <header>
         <nav>
           <h4>Water My Plants </h4>
           <ul>
+            <li>
+              {token && <Link to='/plants'>My Plants</Link>}
+            </li>
             <li>
               <Link to="/">Home</Link>
             </li>
@@ -35,21 +42,18 @@ function App() {
       </header>
 
       <Switch>
+        <PrivateRoute component={PlantList} exact path='/plants' />
+        <PrivateRoute component={Account} exact path='/account'/>
+        <PrivateRoute component={SignOut} exact path='/signout' />
+
         <Route path='/login'>
           <Login />
         </Route>
+
         <Route path='/signup'>
           <SignUp />
         </Route>
-        <Route path='/signout'>
-          <SignOut />
-        </Route>
-        <Route path='/plants'>
-          <PlantList />
-        </Route>
-        <Route path='/account'>
-          <Account />
-        </Route>
+
         <Route exact path='/'>
           <Home />
         </Route>
