@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router';
 import axios from 'axios';
 
 const initialFormValues = {
@@ -16,6 +17,7 @@ const Login = (props) => {
     const [formVal, setFormVal] = useState(initialFormValues);
     const [disabled, setDisabled] = useState(initialDisabled);
     const [formErrors, setFormErrors] = useState(initialFormErrors);
+    const { push } = useHistory();
 
 
     const onChange = evt => {
@@ -30,9 +32,10 @@ const Login = (props) => {
     const onSubmit = evt => {
         evt.preventDefault()
         
-        axios.post('http://localhost:3000/api/auth/login', formVal)
+        axios.post('https://water-the-plants-api.herokuapp.com/api/auth/login', formVal)
         .then(res => {
-            console.log(res)
+            localStorage.setItem('token', res.data.token);
+            push('/plants');
         })
         .catch(err => {
             console.log(err);
