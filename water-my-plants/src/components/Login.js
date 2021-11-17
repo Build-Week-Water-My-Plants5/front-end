@@ -1,47 +1,42 @@
-import React from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
 
-/* const intialFormvalues = {
+const initialFormValues = {
     username:'',
     password:'',
 };
-const intialFormErrors = {
+const initialFormErrors = {
     username:'',
     password:'',
 };
 const initialDisabled = true;
 
+
 const Login = (props) => {
-     const { change, submit, disabled, errors } = props;
-     const [newValue, setNewValue] = useState(intialFormValues);
-     const [disabled, setDisabled] = useState(initialDisabled);
+    const [formVal, setFormVal] = useState(initialFormValues);
+    const [disabled, setDisabled] = useState(initialDisabled);
     const [formErrors, setFormErrors] = useState(initialFormErrors);
 
+
     const onChange = evt => {
-        setNewValue({ ...formNewValue, [evt.target.name]: evt.target.value })
+        if (formVal.username !== '' && formVal.password !== '') {
+            setDisabled(false);
+        } else {
+            setDisabled(true);
+        }
+        setFormVal({ ...formVal, [evt.target.name]: evt.target.value })
     }
 
     const onSubmit = evt => {
         evt.preventDefault()
-        submit()
-    }
-}
- */
-
-
-const Login = (props) => {
-
-    const { change, submit, disabled, errors } = props;
-    const { username, password } = props.value;
-
-    const onChange = evt => {
-        const { name, value , type } = evt.target
-        const newValue = (values => ({...values, [name]: value}))
-    }
-    // dont think newValue is correct but wasnt sure what to put in place.
-
-    const onSubmit = evt => {
-        evt.preventDefault()
-        submit()
+        
+        axios.post('http://localhost:3000/api/auth/login', formVal)
+        .then(res => {
+            console.log(res)
+        })
+        .catch(err => {
+            console.log(err);
+        })
     }
 
     return (
@@ -54,21 +49,21 @@ const Login = (props) => {
                     <input
                         type='text'
                         name='username'
-                        value={username}
+                        value={formVal.username}
                         onChange={onChange}
                     />
                 </label>
-                {errors.username}
+                {formErrors.username}
 
                 <label >Password
                     <input
                         type='text'
                         name='password'
-                        value={password}
+                        value={formVal.password}
                         onChange={onChange}
                     />
                 </label>
-                {errors.password}
+                {formErrors.password}
 
                 <button disabled={disabled}>Login</button>
             </div>
