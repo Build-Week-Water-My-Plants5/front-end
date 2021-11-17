@@ -1,27 +1,51 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useState } from 'react';
 
+
+const initFormVal = {
+    username: '',
+    phoneNumber: '',
+    password: '',
+}
+const initErrors = {
+    username: '',
+    phoneNumber: '',
+    password: '',
+}
 const SignUp = (props) => {
-    const { change, submit, disabled, errors } = props;
-    const { username, email, password, number, tos } = props.value;
+    const [formVal, setFormVal] = useState(initFormVal);
+    const [errors, setErrors] = useState(initErrors);
+    const [disabled, setDisabled] = useState(true);
+
 
     const onChange = evt => {
         const { name, value, checked, type } = evt.target;
         const newValue = type === 'checkbox' ? checked : value;
-        change(name, newValue)
+
+        setFormVal({...formVal, [name]: newValue})
+
+        if (formVal.username !== '' &&  formVal.phoneNumber !== '' && formVal.password !== '') {
+            setDisabled(false);
+        } else {
+            setDisabled(true);
+        }
     }
 
     const onSubmit = evt => {
         evt.preventDefault();
-        submit()
 
-
+        axios.post("http://localhost:3000/api/auth/register", formVal)
+        .then(res => {
+            console.log(res)
+        })
+        .catch(err => console.log(err));
     }
 
     return (
 
         <form onSubmit={onSubmit}>
             <div className='header'>
-                Sing Up
+                Sign Up
             </div>
             
 
@@ -30,7 +54,7 @@ const SignUp = (props) => {
                     <input
                         type='text'
                         name='username'
-                        value={username}
+                        value={formVal.username}
                         onChange={onChange}
                     />
                 </label>
@@ -38,23 +62,11 @@ const SignUp = (props) => {
             </div>
 
             <div>
-                <label>email
-                    <input
-                        type='text'
-                        name='email'
-                        value={email}
-                        onChange={onChange}
-                    />
-                </label>
-                {errors.email}
-            </div>
-
-            <div>
                 <label >Password
                     <input
                         type='text'
                         name='password'
-                        value={password}
+                        value={formVal.password}
                         onChange={onChange}
                     />
                 </label>
@@ -65,24 +77,14 @@ const SignUp = (props) => {
                 <label >Phone Number
                     <input
                         type='text'
-                        name='number'
-                        value={number}
+                        name='phoneNumber'
+                        value={formVal.phoneNumber}
                         onChange={onChange}
                     />
                 </label>
-                {errors.number}
+                {errors.phoneNumber}
             </div>
 
-            <div>
-                <label> Terms of Service
-                    <input
-                        type='checkbox'
-                        name='tos'
-                        checked={tos}
-                        onChange={onChange}
-                    />
-                </label>
-            </div>
             <button disabled={disabled}>Sign Up </button>
 
         </form>
