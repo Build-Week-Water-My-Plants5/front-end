@@ -14,16 +14,23 @@ function App() {
     <div className="App">
       <header>
         <nav>
-          {/* Check for user auth, then render plantList Link */}
-          {/* Check for user auth, then render Account Link */}
-          {/* !user ? SignUp & SignIn : SignOut */}
-          <Link to="/">Home </Link>
-          <Link to="/login">Login </Link>
-          <Link to='/signup'>Sign Up </Link>
-          <Link to="/"> </Link>
-
-        {/* the other links such as signout and plants will only be available to auth users so im gonna wait - */}
-        {/* to do that when we have setup the authentication */}
+          <h4>Water My Plants </h4>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/login">Login</Link>
+            </li>
+            <li>
+              <Link to="/signup">Sign Up</Link>
+            </li>
+          </ul>
+            {/* Check for user auth, then render plantList Link */}
+            {/* Check for user auth, then render Account Link */}
+            {/* !user ? SignUp & SignIn : SignOut */}
+            {/* the other links such as signout and plants will only be available to auth users so im gonna wait - */}
+            {/* to do that when we have setup the authentication */}
         </nav>
       </header>
 
