@@ -1,14 +1,41 @@
 import React from 'react';
 
+/* const intialFormvalues = {
+    username:'',
+    password:'',
+};
+const intialFormErrors = {
+    username:'',
+    password:'',
+};
+const initialDisabled = true;
+
+const Login = (props) => {
+     const { change, submit, disabled, errors } = props;
+     const [newValue, setNewValue] = useState(intialFormValues);
+     const [disabled, setDisabled] = useState(initialDisabled);
+    const [formErrors, setFormErrors] = useState(initialFormErrors);
+
+    const onChange = evt => {
+        setNewValue({ ...formNewValue, [evt.target.name]: evt.target.value })
+    }
+
+    const onSubmit = evt => {
+        evt.preventDefault()
+        submit()
+    }
+}
+ */
+
+
 const Login = (props) => {
 
     const { change, submit, disabled, errors } = props;
     const { username, password } = props.value;
 
     const onChange = evt => {
-        const { name, value, checked, type } = evt.target
-        const newValue = type === 'checkbox' ? checked : value;
-        change(name, newValue)
+        const { name, value , type } = evt.target
+        const newValue = (values => ({...values, [name]: value}))
     }
     // dont think newValue is correct but wasnt sure what to put in place.
 
@@ -19,11 +46,10 @@ const Login = (props) => {
 
     return (
         <form onSubmit={onSubmit}>
+            <div>
 
-            <div className='header'>
-                Login
-            </div>
-            <div className='box'>
+                <h1>Login</h1>
+
                 <label>Username
                     <input
                         type='text'
@@ -33,10 +59,7 @@ const Login = (props) => {
                     />
                 </label>
                 {errors.username}
-            </div>
 
-
-            <div className='input-p'>
                 <label >Password
                     <input
                         type='text'
@@ -46,9 +69,9 @@ const Login = (props) => {
                     />
                 </label>
                 {errors.password}
-            </div>
-            <button disabled={disabled}>Login</button>
 
+                <button disabled={disabled}>Login</button>
+            </div>
         </form>
     );
 }

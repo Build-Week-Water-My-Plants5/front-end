@@ -5,13 +5,13 @@ const SignUp = (props) => {
     const { username, email, password, number, tos } = props.value;
 
     const onChange = evt => {
-        const { name, value, checked, type } = evt.target
+        const { name, value, checked, type } = evt.target;
         const newValue = type === 'checkbox' ? checked : value;
         change(name, newValue)
     }
 
     const onSubmit = evt => {
-        evt.preventDefault()
+        evt.preventDefault();
         submit()
 
 
@@ -21,7 +21,7 @@ const SignUp = (props) => {
 
         <form onSubmit={onSubmit}>
             <div className='header'>
-                Sing SignUp
+                Sing Up
             </div>
             
 
