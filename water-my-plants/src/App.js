@@ -1,4 +1,5 @@
 import { Switch, Link, Route } from 'react-router-dom';
+import { useState } from 'react';
 import './App.css';
 
 // Component Imports
@@ -11,8 +12,7 @@ import SignUp from './components/SignUp';
 import SignOut from './components/SignOut';
 
 function App() {
-  const token = localStorage.getItem('token');
-
+  const [token, setToken] = useState(localStorage.getItem('token'));
 
   return (
     <div className="App">
@@ -27,10 +27,10 @@ function App() {
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="/login">Login</Link>
+              {!token && <Link to="/login">Login</Link>}
             </li>
             <li>
-              <Link to="/signup">Sign Up</Link>
+              {!token ? <Link to="/signup">Sign Up</Link> : <Link to='/signout'>Sign Out</Link>}
             </li>
           </ul>
             {/* Check for user auth, then render plantList Link */}

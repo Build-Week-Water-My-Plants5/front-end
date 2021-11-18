@@ -30,7 +30,7 @@ const Login = (props) => {
     }
 
     const onSubmit = evt => {
-        evt.preventDefault()
+        evt.preventDefault();
         
         axios.post('https://water-the-plants-api.herokuapp.com/api/auth/login', formVal)
         .then(res => {
