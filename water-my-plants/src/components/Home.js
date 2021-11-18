@@ -9,7 +9,7 @@ const Home = () => {
             <div className="main-container">
                 <div className="column-item">
                     <div className="card">
-                        <img src="https://via.placeholder.com/150" alt="dummy" />
+                        <img src="../images/plant.jpg" alt="dummy" />
                         <h2>Subhead 1</h2>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro esse perspiciatis, amet ex maxime sint?</p>
                         <button>Button</button>
@@ -18,7 +18,7 @@ const Home = () => {
                 </div>
                 <div className="column-item">
                     <div className="card">
-                    <img src="https://via.placeholder.com/150" alt="dummy" />
+                    <img src="../images/plant2.jpg" alt="dummy" />
                         <h2>Subhead 2</h2>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro esse perspiciatis, amet ex maxime sint?</p>
                         <button>Button</button>
@@ -27,7 +27,7 @@ const Home = () => {
                 </div>
                 <div className="column-item">
                     <div className="card">
-                    <img src="https://via.placeholder.com/150" alt="dummy" />
+                    <img src="../images/plant3.jpg" alt="dummy" />
                         <h2>Subhead 3</h2>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro esse perspiciatis, amet ex maxime sint?</p>
                         <button>Button</button>
