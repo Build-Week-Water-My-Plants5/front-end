@@ -21,10 +21,13 @@ function App() {
           <h4>Water My Plants </h4>
           <ul>
             <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
               {token && <Link to='/plants'>My Plants</Link>}
             </li>
             <li>
-              <Link to="/">Home</Link>
+              {token && <Link to='/account'>My Account</Link>}
             </li>
             <li>
               {!token && <Link to="/login">Login</Link>}
