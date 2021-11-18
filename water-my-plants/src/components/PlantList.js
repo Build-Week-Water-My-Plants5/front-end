@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import Plant from './Plant';
-
+import { mockPlants } from '../data';
 
 const initFormVal = {
     user_id: parseInt(localStorage.getItem('uid')),
@@ -13,15 +13,11 @@ const initFormVal = {
 const PlantList = () => {
     const [isEditing, setIsEditing] = useState(false);
     const [formVal, setFormVal] = useState(initFormVal);
-    const [isNew, setIsNew] = useState(true);
+    const [plantId, setPlantId] = useState();
     const [plants, setPlants] = useState([]);
 
     useEffect(() => {
-        axios.get('https://water-the-plants-api.herokuapp.com/api/plants')
-        .then(res => {
-            setPlants(res.data);
-        })
-        .catch(err => console.log(err));
+        setPlants(mockPlants);
     }, [])
 
     const handleChange = (e) => {
@@ -33,7 +29,6 @@ const PlantList = () => {
 
     const handleAddPlant = () => {
         setFormVal(initFormVal);
-        setIsNew(true);
         setIsEditing(true);
     }
 
@@ -41,12 +36,8 @@ const PlantList = () => {
         e.preventDefault();
         setIsEditing(false);
         
-        if (isNew) {
-            axios.post('https://water-the-plants-api.herokuapp.com/api/plants/', formVal)
-            .then(res => {
-                console.log(res)
-            })
-            .catch(err => console.log(err));
+        if (!plantId) {
+            // handle axios.post
         } else {
             // handle axios.put
         }
@@ -71,7 +62,7 @@ const PlantList = () => {
 
             <button onClick={handleAddPlant}>Add a Plant</button>
 
-            {plants.map(item => <Plant key={item.id} data={item} setIsEditing={setIsEditing} isEditing={isEditing} setFormVal={setFormVal} setIsNew={setIsNew}/>)}
+            {plants.map(item => <Plant key={item.id} data={item} setPlants={setPlants} plants={plants} setIsEditing={setIsEditing} isEditing={isEditing} setFormVal={setFormVal} setPlantId={setPlantId}/>)}
         </div>
     )
 }

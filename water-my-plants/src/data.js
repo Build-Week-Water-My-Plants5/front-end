@@ -1,5 +1,5 @@
 
-export const plants = [
+export const mockPlants = [
     {
         id: 1,
         nickname: 'Venus Fly Trap',

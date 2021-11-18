@@ -1,11 +1,11 @@
 
 
-const Plant = ({ data, isEditing, setIsEditing, setFormVal, setIsNew }) => {
+const Plant = ({ data, isEditing, setIsEditing, setFormVal, plants, setPlants, setPlantId }) => {
 
     const handleEdit = () => {
         if (!isEditing) {
             setIsEditing(true);
-            setIsNew(false);
+            setPlantId(data.id);
             setFormVal({
                 nickname: data.nickname,
                 image: data.image,
@@ -16,7 +16,7 @@ const Plant = ({ data, isEditing, setIsEditing, setFormVal, setIsNew }) => {
     }
 
     const handleDelete = () => {
-        // Handle Delete
+        setPlants(plants.filter(item => item.nickname !== data.nickname))
     }
 
     return(
