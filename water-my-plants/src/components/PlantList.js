@@ -46,7 +46,7 @@ const PlantList = () => {
     }
 
     return(
-        <div>
+        <div className='container'>
             {isEditing && (
                 <form>
                     <label>Nickname</label>
@@ -62,7 +62,7 @@ const PlantList = () => {
                 </form>)
             }
 
-            <button className='add-plant-btn' onClick={handleAddPlant}>Add a Plant</button>
+            <button className={`add-plant-btn ${isEditing && 'hide'}`} onClick={handleAddPlant}>Add a Plant</button>
             <div className='plant-list-container'>
                 {plants.map(item => <Plant key={item.id} data={item} setPlants={setPlants} plants={plants} setIsEditing={setIsEditing} isEditing={isEditing} setFormVal={setFormVal} setPlantId={setPlantId}/>)}
             </div>

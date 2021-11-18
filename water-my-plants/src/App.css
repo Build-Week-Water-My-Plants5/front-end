@@ -26,3 +26,11 @@ a {
   padding: 6px;
   color: #204963;
 }
+
+body {
+  background-color: #b2c2c0;
+}
+
+nav {
+  background-color: gold;
+}
