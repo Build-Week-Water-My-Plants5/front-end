@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { mockUser } from '../data.js';
 
+import './PlantList.css';
 
 const Account = () => {
     const [user, setUser] = useState({});
@@ -17,10 +18,10 @@ const Account = () => {
     }, [])
 
     return(
-        <div>
-            <span>ID: {user.user_id}</span>
-            <span>Username: {user.username}</span>
-            <span>Phone: {mockUser.phone}</span>
+        <div className='plant column'>
+            <p>ID: {user.user_id}</p>
+            <p>Username: {user.username}</p>
+            <p>Phone: {mockUser.phone}</p>
         </div>
     )
 }

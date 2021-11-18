@@ -21,3 +21,8 @@ form {
 .add-plant-button {
     margin: 15px;
 }
+
+.column {
+    flex-direction: column;
+    width: 25%;
+}
