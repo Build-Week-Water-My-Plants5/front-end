@@ -4,9 +4,9 @@ import Plant from './Plant';
 
 
 const initFormVal = {
+    user_id: parseInt(localStorage.getItem('uid')),
     nickname: '',
-    image: '',
-    h20frequency: '',
+    h20Frequency: '',
     species: ''
 }
 
@@ -63,10 +63,7 @@ const PlantList = () => {
                     <input type='text' name='species' onChange={handleChange} value={formVal.species}/>
 
                     <label>h20frequency</label>
-                    <input type='text' name='h20frequency' onChange={handleChange} value={formVal.h20frequency}/>
-
-                    <label>Image</label>
-                    <input type='text' name='image' onChange={handleChange} value={formVal.image}/>
+                    <input type='text' name='h20Frequency' onChange={handleChange} value={formVal.h20Frequency}/>
 
                     <button onClick={handleSubmit}>Save</button>
                 </form>)

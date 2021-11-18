@@ -6,6 +6,7 @@ const SignOut = ({ setToken }) => {
     const { push } = useHistory();
 
     useEffect(() => {
+        localStorage.removeItem('uid');
         localStorage.removeItem('token');
         setToken(null);
         push('/');
