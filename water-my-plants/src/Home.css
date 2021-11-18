@@ -1,18 +1,35 @@
+div {
+  background-color:#b2c2c0 ;
+
+}
+
 h1 {
   font-size: 4rem;
+
 }
 
 .main-container {
   display: flex;
   flex-wrap: wrap;
   padding: 0.5% 10% 2% 10%;
+  
 }
-
+img {
+  width: 150px;
+  height: 150px;
+  border-radius: 2rem;
+  
+}
+.card{
+  background-color: #cf9915;
+  border-radius: 25px;
+}
 .column-item {
   width: 25%;
   margin: auto;
   padding: 40px;
-  background-color: lightgrey;
+  background-color: #cf9915;
+  border-radius: 25px;
 }
 
 .text-container {
@@ -31,4 +48,11 @@ h1 {
 
 button {
   font-size: 1.3rem;
+  background-color: #e6d2a1;
+  border-radius: 30px;
+  
+}
+
+button:hover {
+  background-color: #806626
 }
