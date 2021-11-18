@@ -1,4 +1,5 @@
 import { Switch, Link, Route } from 'react-router-dom';
+import { useState } from 'react';
 import './App.css';
 
 // Component Imports
@@ -11,8 +12,7 @@ import SignUp from './components/SignUp';
 import SignOut from './components/SignOut';
 
 function App() {
-  const token = localStorage.getItem('token');
-
+  const [token, setToken] = useState(localStorage.getItem('token'));
 
   return (
     <div className="App">
@@ -21,16 +21,19 @@ function App() {
           <h4>Water My Plants </h4>
           <ul>
             <li>
-              {token && <Link to='/plants'>My Plants</Link>}
-            </li>
-            <li>
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="/login">Login</Link>
+              {token && <Link to='/plants'>My Plants</Link>}
             </li>
             <li>
-              <Link to="/signup">Sign Up</Link>
+              {token && <Link to='/account'>My Account</Link>}
+            </li>
+            <li>
+              {!token && <Link to="/login">Login</Link>}
+            </li>
+            <li>
+              {!token ? <Link to="/signup">Sign Up</Link> : <Link to='/signout'>Sign Out</Link>}
             </li>
           </ul>
             {/* Check for user auth, then render plantList Link */}
@@ -44,10 +47,10 @@ function App() {
       <Switch>
         <PrivateRoute component={PlantList} exact path='/plants' />
         <PrivateRoute component={Account} exact path='/account'/>
-        <PrivateRoute component={SignOut} exact path='/signout' />
+        <PrivateRoute component={SignOut} setToken={setToken} exact path='/signout' />
 
         <Route path='/login'>
-          <Login />
+          <Login setToken={setToken}/>
         </Route>
 
         <Route path='/signup'>

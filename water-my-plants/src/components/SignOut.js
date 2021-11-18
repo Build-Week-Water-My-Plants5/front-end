@@ -1,7 +1,16 @@
+import { useEffect } from "react";
+import { useHistory } from "react-router";
 
 
-const SignOut = () => {
+const SignOut = ({ setToken }) => {
+    const { push } = useHistory();
 
+    useEffect(() => {
+        localStorage.removeItem('uid');
+        localStorage.removeItem('token');
+        setToken(null);
+        push('/');
+    }, [])
 
     return(
         <div>

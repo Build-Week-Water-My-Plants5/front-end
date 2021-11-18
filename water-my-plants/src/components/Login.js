@@ -13,7 +13,7 @@ const initialFormErrors = {
 const initialDisabled = true;
 
 
-const Login = (props) => {
+const Login = ({ setToken }) => {
     const [formVal, setFormVal] = useState(initialFormValues);
     const [disabled, setDisabled] = useState(initialDisabled);
     const [formErrors, setFormErrors] = useState(initialFormErrors);
@@ -30,11 +30,14 @@ const Login = (props) => {
     }
 
     const onSubmit = evt => {
-        evt.preventDefault()
+        evt.preventDefault();
         
         axios.post('https://water-the-plants-api.herokuapp.com/api/auth/login', formVal)
         .then(res => {
+            console.log(res);
+            localStorage.setItem('uid', res.data.user_id.toString());
             localStorage.setItem('token', res.data.token);
+            setToken(localStorage.getItem('token'));
             push('/plants');
         })
         .catch(err => {

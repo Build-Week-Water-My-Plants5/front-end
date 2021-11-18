@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 
 const initFormVal = {
     username: '',
-    //phoneNumber: '',
+    phoneNumber: '',
     password: ''
 }
 const initErrors = {
