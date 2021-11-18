@@ -47,7 +47,7 @@ function App() {
         <PrivateRoute component={SignOut} setToken={setToken} exact path='/signout' />
 
         <Route path='/login'>
-          <Login />
+          <Login setToken={setToken}/>
         </Route>
 
         <Route path='/signup'>
