@@ -1,0 +1,25 @@
+.border {
+  position: relative;
+  width: 500px;
+  height: 1vh;
+  margin: auto;
+}
+
+form {
+  position: absolute;
+  margin: 0 auto;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  border: 1px solid gray;
+  box-shadow: 1px 1px 10px #888888;
+}
+
+label,
+input {
+  display: block;
+}
+
+label {
+  margin-bottom: 10px;
+}

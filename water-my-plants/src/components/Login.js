@@ -1,6 +1,34 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router';
 import axios from 'axios';
+import styled from "styled-components";
+
+document.body.style.backgroundColor = "#b2c2c0";
+
+const StyledButton = styled.button`
+  background-color: #D2DECE;
+  font-size: 20px;
+  color: black;
+  border-radius: 5px;
+  width: 25%;
+  margin-bottom: 15px;
+`;
+
+const StyledH1 = styled.h1`
+  font-size: 32px;
+`;
+
+const StyledLabel = styled.label`
+    font-size: 20px;
+    font-weight: bold;
+    
+`;
+
+const StyledInput = styled.input`
+  width: 40%;
+  margin: auto;
+  display: block;
+`;
 
 const initialFormValues = {
     username:'',
@@ -46,34 +74,37 @@ const Login = ({ setToken }) => {
     }
 
     return (
-        <form onSubmit={onSubmit}>
-            <div>
+        <div className="container">
 
-                <h1>Login</h1>
+                <StyledH1>Login</StyledH1>
 
-                <label>Username
-                    <input
+                <div className="border">
+                <form onSubmit={onSubmit}>
+                <StyledLabel>Username
+                    <StyledInput
                         type='text'
                         name='username'
                         value={formVal.username}
                         onChange={onChange}
                     />
-                </label>
+                </StyledLabel>
                 {formErrors.username}
 
-                <label >Password
-                    <input
+                <StyledLabel >Password
+                    <StyledInput
                         type='text'
                         name='password'
                         value={formVal.password}
                         onChange={onChange}
                     />
-                </label>
+                </StyledLabel>
                 {formErrors.password}
 
-                <button disabled={disabled}>Login</button>
-            </div>
+                <StyledButton disabled={disabled}>Login</StyledButton>
+            
         </form>
+        </div>
+        </div>
     );
 }
 
