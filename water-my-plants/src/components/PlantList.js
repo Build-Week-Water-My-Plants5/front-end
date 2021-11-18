@@ -3,6 +3,8 @@ import { useState, useEffect } from 'react';
 import Plant from './Plant';
 import { mockPlants } from '../data';
 
+import './PlantList.css';
+
 const initFormVal = {
     user_id: parseInt(localStorage.getItem('uid')),
     nickname: '',
@@ -60,9 +62,10 @@ const PlantList = () => {
                 </form>)
             }
 
-            <button onClick={handleAddPlant}>Add a Plant</button>
-
-            {plants.map(item => <Plant key={item.id} data={item} setPlants={setPlants} plants={plants} setIsEditing={setIsEditing} isEditing={isEditing} setFormVal={setFormVal} setPlantId={setPlantId}/>)}
+            <button className='add-plant-btn' onClick={handleAddPlant}>Add a Plant</button>
+            <div className='plant-list-container'>
+                {plants.map(item => <Plant key={item.id} data={item} setPlants={setPlants} plants={plants} setIsEditing={setIsEditing} isEditing={isEditing} setFormVal={setFormVal} setPlantId={setPlantId}/>)}
+            </div>
         </div>
     )
 }

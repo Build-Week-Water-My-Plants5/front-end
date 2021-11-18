@@ -1,0 +1,23 @@
+.plant-list-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.plant {
+    width: 200px;
+    border: 3px solid black;
+    margin: 2% 30px;
+    padding: 2%;
+    border-radius: 25px;
+    box-shadow: 10px 10px black;
+    background-color: gold;
+}
+
+form {
+    margin: 2% 0;
+}
+
+.add-plant-button {
+    margin: 15px;
+}
