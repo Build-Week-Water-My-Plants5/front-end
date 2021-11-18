@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import axios from 'axios';
+import { useState, useEffect } from 'react';
 import Plant from './Plant';
 
 
@@ -9,18 +10,19 @@ const initFormVal = {
     species: ''
 }
 
-const testPlant = {
-    nickname: 'Test Plant 1',
-    image: 'Test Image',
-    h20frequency: '5',
-    species: 'Test Species'
-}
-
 const PlantList = () => {
     const [isEditing, setIsEditing] = useState(false);
     const [formVal, setFormVal] = useState(initFormVal);
     const [isNew, setIsNew] = useState(true);
-    const [plants, setPlants] = useState([testPlant]);
+    const [plants, setPlants] = useState([]);
+
+    useEffect(() => {
+        axios.get('https://water-the-plants-api.herokuapp.com/api/plants')
+        .then(res => {
+            setPlants(res.data);
+        })
+        .catch(err => console.log(err));
+    }, [])
 
     const handleChange = (e) => {
         setFormVal({
@@ -39,8 +41,12 @@ const PlantList = () => {
         e.preventDefault();
         setIsEditing(false);
         
-        if (setIsNew) {
-            // Handle axios.post
+        if (isNew) {
+            axios.post('https://water-the-plants-api.herokuapp.com/api/plants/', formVal)
+            .then(res => {
+                console.log(res)
+            })
+            .catch(err => console.log(err));
         } else {
             // handle axios.put
         }
@@ -60,7 +66,7 @@ const PlantList = () => {
                     <input type='text' name='h20frequency' onChange={handleChange} value={formVal.h20frequency}/>
 
                     <label>Image</label>
-                    <input type='text' name='image' onChange={handleChange} value={formVal.h20frequency}/>
+                    <input type='text' name='image' onChange={handleChange} value={formVal.image}/>
 
                     <button onClick={handleSubmit}>Save</button>
                 </form>)

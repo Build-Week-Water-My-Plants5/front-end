@@ -44,7 +44,7 @@ function App() {
       <Switch>
         <PrivateRoute component={PlantList} exact path='/plants' />
         <PrivateRoute component={Account} exact path='/account'/>
-        <PrivateRoute component={SignOut} exact path='/signout' />
+        <PrivateRoute component={SignOut} setToken={setToken} exact path='/signout' />
 
         <Route path='/login'>
           <Login />
